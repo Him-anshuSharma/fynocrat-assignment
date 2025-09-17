@@ -48,4 +48,6 @@ class TaskViewModel @Inject constructor(private val repository: TaskRepository) 
         }
     }
 
+    suspend fun getTaskById(id:Int) = repository.getTaskById(id)
+
 }

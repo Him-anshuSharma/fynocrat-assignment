@@ -1,5 +1,7 @@
 package himanshu.root.taskmanager.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -17,6 +19,7 @@ import himanshu.root.taskmanager.databinding.ActivityMainBinding
 import himanshu.root.taskmanager.databinding.AddTaskDialogBinding
 import himanshu.root.taskmanager.viewmodel.TaskViewModel
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -27,7 +30,16 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        val adapter = TaskListAdapter({task -> viewmodel.updateTask(task.copy(isDone = !task.isDone))})
+        val adapter = TaskListAdapter(
+            {task ->
+                viewmodel.updateTask(task.copy(isDone = !task.isDone, updatedAt = System.currentTimeMillis()))
+            },
+            onTap = {id ->
+                val intent = Intent(this, TaskDetails::class.java)
+                intent.putExtra("index",id)
+                startActivity(intent)
+            }
+        )
         binding.tasksRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.tasksRecyclerView.adapter = adapter
 

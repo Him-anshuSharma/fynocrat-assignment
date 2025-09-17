@@ -13,6 +13,9 @@ interface TaskDao {
     @Query("Select * from tasks order by createdAt desc")
     fun getTasks(): Flow<List<Task>>
 
+    @Query("Select * from tasks where id = :id")
+    suspend fun getTaskById(id:Int): Task?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addTask(task:Task)
 

@@ -12,4 +12,7 @@ class TaskRepository @Inject constructor(private val taskDao : TaskDao){
     suspend fun updateTask(task: Task) = taskDao.updateTask(task)
     suspend fun deleteTask(task: Task) = taskDao.deleteTask(task)
     fun searchTasks(query:String) = taskDao.getTasksByKeyword(query)
+
+    suspend fun getTaskById(id:Int) = taskDao.getTaskById(id)
+
 }
