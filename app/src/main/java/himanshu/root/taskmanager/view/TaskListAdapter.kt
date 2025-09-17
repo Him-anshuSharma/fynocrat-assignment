@@ -13,7 +13,7 @@ import himanshu.root.taskmanager.databinding.TaskItemBinding
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
-class TaskListAdapter(): ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TaskDiffUtils()){
+class TaskListAdapter(val onCheck: (Task) -> Unit): ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TaskDiffUtils()){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -33,7 +33,9 @@ class TaskListAdapter(): ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TaskD
         holder.title.text = task.title
         holder.date.text = dateString
         holder.checked.isChecked = task.isDone
-
+        holder.checked.setOnClickListener {
+            onCheck(task)
+        }
     }
 
     inner class TaskViewHolder(itemView : TaskItemBinding): RecyclerView.ViewHolder(itemView.root){

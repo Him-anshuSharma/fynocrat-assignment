@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        val adapter = TaskListAdapter()
+        val adapter = TaskListAdapter({task -> viewmodel.updateTask(task.copy(isDone = !task.isDone))})
         binding.tasksRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.tasksRecyclerView.adapter = adapter
 
