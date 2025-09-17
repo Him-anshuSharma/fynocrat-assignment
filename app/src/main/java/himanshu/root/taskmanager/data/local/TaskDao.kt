@@ -22,7 +22,7 @@ interface TaskDao {
     @Delete
     suspend fun deleteTask(task: Task)
 
-    @Query("Select * from tasks where title like '%' || :query || '%' order by createdAt")
+    @Query("Select * from tasks where title like '%' || :query || '%' order by createdAt desc")
     fun getTasksByKeyword(query: String): Flow<List<Task>>
 
 }

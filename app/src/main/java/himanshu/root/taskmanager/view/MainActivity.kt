@@ -39,6 +39,7 @@ class MainActivity : ComponentActivity() {
         }
 
         binding.searchBar.addTextChangedListener { it->
+            viewmodel.setQuery(it.toString())
         }
 
         binding.addTaskButton.setOnClickListener {
