@@ -1,6 +1,4 @@
-# Task Manager - Android App
-
-A simple yet effective Android application for managing your daily tasks. Built with modern Android development tools and practices.
+# SimepleTasks - Android App
 
 **📥 Download APK:** [Click here to download](https://github.com/Him-anshuSharma/fynocrat-assignment/releases/download/apk/app-debug.apk)
 
