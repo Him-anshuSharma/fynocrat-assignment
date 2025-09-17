@@ -3,6 +3,7 @@ package himanshu.root.taskmanager.view
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import androidx.core.widget.addTextChangedListener
 import dagger.hilt.android.AndroidEntryPoint
 import himanshu.root.taskmanager.databinding.ActivityMainBinding
 
@@ -13,5 +14,12 @@ class MainActivity : ComponentActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        binding.searchBar.addTextChangedListener { it->
+        }
+
+        binding.addTaskButton.setOnClickListener {
+
+        }
     }
 }

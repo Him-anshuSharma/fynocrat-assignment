@@ -10,6 +10,6 @@ data class Task(
     val title:String,
     val description:String?,
     val updatedAt:Long,
-    val createdAt: Long,
+    val createdAt: Long = System.currentTimeMillis(),
     val isDone: Boolean
 )
