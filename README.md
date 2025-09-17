@@ -4,6 +4,9 @@ A simple yet effective Android application for managing your daily tasks. Built 
 
 **📥 Download APK:** [Click here to download](https://github.com/Him-anshuSharma/fynocrat-assignment/releases/download/apk/app-debug.apk)
 
+## Demo Video
+[Watch the App Demo Video](https://youtu.be/rq1vX8ALldU)
+
 ## Table of Contents
 * [Screenshots](#screenshots)
 * [Architecture](#architecture)
