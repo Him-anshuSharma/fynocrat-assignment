@@ -18,8 +18,9 @@ class TaskListAdapter(): ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TaskD
         parent: ViewGroup,
         viewType: Int
     ): TaskViewHolder {
-        val binding = TaskItemBinding.inflate(LayoutInflater.from(parent.context))
-        return TaskViewHolder(binding.root)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = TaskItemBinding.inflate(layoutInflater,parent,false)
+        return TaskViewHolder(binding)
     }
 
     override fun onBindViewHolder(
@@ -35,10 +36,10 @@ class TaskListAdapter(): ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TaskD
 
     }
 
-    inner class TaskViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
-        val title = itemView.findViewById<TextView>(R.id.taskTitle)
-        val date = itemView.findViewById<TextView>(R.id.taskDate)
-        val checked = itemView.findViewById<CheckBox>(R.id.taskIsDone)
+    inner class TaskViewHolder(itemView : TaskItemBinding): RecyclerView.ViewHolder(itemView.root){
+        val title = itemView.taskTitle
+        val date = itemView.taskDate
+        val checked = itemView.taskIsDone
 
     }
 
