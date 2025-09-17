@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import himanshu.root.taskmanager.data.local.Task
 import himanshu.root.taskmanager.databinding.TaskItemBinding
 import himanshu.root.taskmanager.utils.longToDate
-import java.time.LocalDateTime
-import java.time.ZoneOffset
 
 class TaskListAdapter(val onCheck: (Task) -> Unit, val onTap: (Int) -> Unit): ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TaskDiffUtils()){
     override fun onCreateViewHolder(
@@ -19,6 +17,7 @@ class TaskListAdapter(val onCheck: (Task) -> Unit, val onTap: (Int) -> Unit): Li
         val binding = TaskItemBinding.inflate(layoutInflater,parent,false)
         return TaskViewHolder(binding)
     }
+
 
     override fun onBindViewHolder(
         holder: TaskViewHolder,

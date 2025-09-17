@@ -69,7 +69,6 @@ class TaskDetails : AppCompatActivity() {
                         updatedAt = System.currentTimeMillis()
                     )
                     viewmodel.updateTask(updatedTask)
-                    binding.updatedAt.setText(longToDate(updatedTask.updatedAt))
                     finish()
                 }
             }
