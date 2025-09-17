@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
@@ -45,7 +46,15 @@ class MainActivity : ComponentActivity() {
 
         lifecycleScope.launch {
             viewmodel.tasks.collect {
-                Log.d("Hello",it.toString())
+                binding.loadingFragment.visibility = View.GONE
+                if (it.isEmpty()){
+                    binding.emptyListMessage.visibility = View.VISIBLE
+                    binding.tasksRecyclerView.visibility = View.GONE
+                }
+                else{
+                    binding.emptyListMessage.visibility = View.GONE
+                    binding.tasksRecyclerView.visibility = View.VISIBLE
+                }
                 adapter.submitList(it)
             }
         }
@@ -63,7 +72,9 @@ class MainActivity : ComponentActivity() {
         val binding = AddTaskDialogBinding.inflate(layoutInflater)
         val view = binding.root
 
-        val dialog = MaterialAlertDialogBuilder(this).setTitle("Add Task").setView(view).setPositiveButton("save"){dialog, which ->
+        val dialog = MaterialAlertDialogBuilder(this).setTitle("Add Task").setView(view).create()
+
+        binding.saveTaskButton.setOnClickListener {
             if(binding.taskTitle.text.toString().isEmpty()){
                 Toast.makeText(this,"Invalid title", Toast.LENGTH_SHORT).show()
             }
@@ -77,9 +88,10 @@ class MainActivity : ComponentActivity() {
                 dialog.dismiss()
             }
         }
-            .setNegativeButton("cancel"){dialog, which ->
-                dialog.dismiss()
-            }
+
+        binding.cancelTaskButton.setOnClickListener {
+            dialog.dismiss()
+        }
 
         dialog.show()
 

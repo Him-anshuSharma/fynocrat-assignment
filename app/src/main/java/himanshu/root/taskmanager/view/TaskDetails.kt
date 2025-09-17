@@ -31,8 +31,8 @@ class TaskDetails : AppCompatActivity() {
             task?.let { t ->
                 binding.title.setText(t.title)
                 if (!t.description.isNullOrEmpty()) binding.desc.setText(t.description)
-                binding.createdAt.setText(longToDate(t.createdAt))
-                binding.updatedAt.setText(longToDate(t.updatedAt))
+                binding.createdAt.setText("Created At: ${longToDate(t.createdAt)}")
+                binding.updatedAt.setText("Updated At: ${longToDate(t.updatedAt)}")
                 binding.status.isChecked = t.isDone
                 updateStatusLabel(binding, t.isDone)
             }
