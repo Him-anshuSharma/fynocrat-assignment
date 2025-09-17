@@ -83,7 +83,6 @@
             android:gravity="center"
             android:id="@+id/emptyListMessage"
             android:textStyle="bold"
-            android:textColor="@color/black"
             android:layout_gravity="center"
             android:text="No Task Found"
             android:layout_width="wrap_content"
