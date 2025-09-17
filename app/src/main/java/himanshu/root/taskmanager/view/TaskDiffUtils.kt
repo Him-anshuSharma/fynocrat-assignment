@@ -20,6 +20,7 @@ class TaskDiffUtils : DiffUtil.ItemCallback<Task>() {
         if(oldItem.title != newItem.title) return false
         if(oldItem.description != newItem.description) return false
         if(oldItem.isDone != newItem.isDone) return false
+        if(oldItem.updatedAt != newItem.updatedAt) return false
         return result
     }
 }
